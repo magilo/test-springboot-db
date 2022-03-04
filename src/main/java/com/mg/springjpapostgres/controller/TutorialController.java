@@ -32,6 +32,15 @@ public class TutorialController {
 
   @GetMapping("/test")
   String home() {
+    try {
+      Tutorial _tutorial = tutorialRepository.save(new Tutorial("jello", "put description here", false));
+      ResponseEntity<Tutorial> entity = new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+      System.out.println(entity.toString());
+      return "test done";
+    } catch (Exception e) {
+      e.printStackTrace();
+      // return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
     return "Hello World!";
   }
 
