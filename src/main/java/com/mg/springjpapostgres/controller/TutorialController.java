@@ -30,6 +30,11 @@ public class TutorialController {
   @Autowired // inject TutorialRepository bean to local variable
   TutorialRepository tutorialRepository;
 
+  @GetMapping("/test")
+  String home() {
+    return "Hello World!";
+  }
+
   @GetMapping("/tutorials")
   public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
     try {
